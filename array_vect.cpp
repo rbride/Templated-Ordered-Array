@@ -7,6 +7,9 @@
 #include <string.h>
 using namespace std;
 
+/* Function Pointer that is used to point towards functions in the container */
+typedef void (*container_fun_ptr)(const void * data_ptr);
+
 //Basic Student Class used to create Students that are added to the Container
 class student
 {
@@ -39,11 +42,9 @@ struct container
   int allocation;    // current size of the array
   int size;          // Number of items currently in the array
   //Type used  for map function, / Student pointer
-  typedef void (*container_fun_ptr)(const void * data_ptr);
-  typedef int (*container_fun_ptr)(const c )
-
+  
   // Construct the array of size
-  container() {
+  container( ) {
     allocation = 3; 
     size = 0;       
     arr = (void **)malloc(allocation);
@@ -55,7 +56,7 @@ struct container
   /* Binary Search Function, used to assist in the insertion and search of the container */
   int container_binsearch(  )
   {
-    
+    cout << "rr";
   }
   void insert( void *n_item )
   {
@@ -74,7 +75,7 @@ struct container
   }
   /* Maps the print_student_info to print student info (NOTE: STUDENT CLASS SPECIFIC) */
   void print() {
-    map( (void (*) (void *)) print_student_info);
+    map( (void (*) (const void *)) print_student_info);
     cout << '\n'; //After Printing new line for sake of output readablity
   }
   /* Makes the function given as an arguement to all elements in the container */
